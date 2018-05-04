@@ -1,18 +1,19 @@
 import com.codahale.metrics.ConsoleReporter;
 import com.codahale.metrics.Meter;
 import com.codahale.metrics.MetricRegistry;
+import redis.clients.jedis.Jedis;
 
 import java.util.concurrent.TimeUnit;
 
-public class Metrics_02_Meter {
+public class Metrics_06_Redis_GET {
 
-    //測量隨時間推移的事件的速略例如每秒請球數(req/sec) 除了平均速率外 meter還會紀錄5 15 的均速
+
 
     //產生一個MetricRegistry 的 instance
     private static final MetricRegistry metrics = new MetricRegistry();
 
     //註冊一個meter的metric
-    private static  final Meter ops_meter = metrics.meter("com.wistron.witlab.ops_meter");
+    private static  final Meter ops_meter = metrics.meter("com.wistron.witlab.redis_put");
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -25,19 +26,21 @@ public class Metrics_02_Meter {
         //讓console Report 每五秒打印一次統計結果
         reporter.start(5, TimeUnit.SECONDS);
 
+        Jedis jedis = new Jedis("localhost");
+
+
         // *** 執行業務邏輯的coding block <<START>> *** //
         System.out.println("===== Coding Block <<S>> ======");
         long start = System.nanoTime(); // 整個coding blocking的計時開始
-        long operations_count = Integer.MAX_VALUE; // 設定要業務邏輯要執行的次數
+        long operations_count = 1000000; // 設定要業務邏輯要執行的次數
 
         // ==> Coding Here
         long COUNTER_CODING_BLOCK = 0;
 
         //main code
         for(int i=0; i< operations_count; i++){
+            jedis.get(""+i);
             // => do something --- start
-            COUNTER_CODING_BLOCK++;
-            Thread.sleep( 10);
             // => do something --- end
 
             ops_meter.mark(); //紀錄備執行一次
