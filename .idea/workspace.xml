@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad40e464-670a-4577-83f2-370fa35a4c42" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Metrics_03_Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Metrics_03_Timer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Metrics_04_Histogram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Metrics_04_Histogram.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -36,11 +36,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Metrics_03_Timer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Metrics_03_Timer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Metrics_03_Timer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="205">
               <caret line="75" column="43" lean-forward="true" selection-start-line="75" selection-start-column="43" selection-end-line="75" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Metrics_04_Histogram.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Metrics_04_Histogram.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,6 +72,7 @@
         <option value="$PROJECT_DIR$/src/main/java/Metrics_01_Baseline.java" />
         <option value="$PROJECT_DIR$/src/main/java/Metrics_02_Meter.java" />
         <option value="$PROJECT_DIR$/src/main/java/Metrics_03_Timer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Metrics_04_Histogram.java" />
       </list>
     </option>
   </component>
@@ -147,7 +160,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Metrics_03_Timer">
+  <component name="RunManager" selected="Application.Metrics_04_Histogram">
     <configuration name="Metrics_01_Baseline" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Metrics_01_Baseline" />
       <module name="Redis_train" />
@@ -160,6 +173,11 @@
     </configuration>
     <configuration name="Metrics_03_Timer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Metrics_03_Timer" />
+      <module name="redis_training" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="Metrics_04_Histogram" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Metrics_04_Histogram" />
       <module name="redis_training" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -208,9 +226,11 @@
       <item itemvalue="Application.Metrics_01_Baseline" />
       <item itemvalue="Application.Metrics_02_Meter" />
       <item itemvalue="Application.Metrics_03_Timer" />
+      <item itemvalue="Application.Metrics_04_Histogram" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Metrics_04_Histogram" />
         <item itemvalue="Application.Metrics_03_Timer" />
         <item itemvalue="Application.Metrics_02_Meter" />
         <item itemvalue="Application.Metrics_01_Baseline" />
@@ -232,6 +252,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -241,12 +262,12 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.5336323" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5336323" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24304539" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24304539" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -310,6 +331,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="75" column="43" lean-forward="true" selection-start-line="75" selection-start-column="43" selection-end-line="75" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Metrics_04_Histogram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

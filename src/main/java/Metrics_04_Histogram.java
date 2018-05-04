@@ -1,4 +1,5 @@
 import com.codahale.metrics.ConsoleReporter;
+import com.codahale.metrics.Histogram;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Timer;
 
@@ -7,13 +8,13 @@ import java.util.concurrent.TimeUnit;
 
 public class Metrics_04_Histogram {
 
-    //計算一段代碼被調用的速率和其持續時間的分佈
+    //度量數據流中值的統計分佈。除了最小、最大、平均之外，他還測量中位數、75 90 95 98 99 99.9的百分位數
 
     //產生一個MetricRegistry 的 instance
     private static final MetricRegistry metrics = new MetricRegistry();
 
-    //註冊一個meter的metric
-    private static  final Timer ops_timer = metrics.timer("com.wistron.witlab.ops_timer");
+    //註冊一個meter的histogram
+    private static  final Histogram ops_histogram = metrics.histogram("com.wistron.witlab.ops_histogram");
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -24,9 +25,10 @@ public class Metrics_04_Histogram {
                 .build();
 
         //讓console Report 每五秒打印一次統計結果
-        reporter.start(5, TimeUnit.SECONDS);
+        reporter.start(30, TimeUnit.SECONDS);
 
-        Random random = new Random();
+        double MEAN = 100.0f;
+        double VARIANCE = 5.0f;
 
         // *** 執行業務邏輯的coding block <<START>> *** //
         System.out.println("===== Coding Block <<S>> ======");
@@ -39,14 +41,13 @@ public class Metrics_04_Histogram {
         //main code
         for(int i=0; i< operations_count; i++){
 
-            final Timer.Context context = ops_timer.time();//計時開始
+
 
             // => do something --- start
-            COUNTER_CODING_BLOCK++;
-            Thread.sleep(random.nextInt(100));
+            ops_histogram.update((int)getGaussian(MEAN,VARIANCE));
             // => do something --- end
 
-            context.close();//計時結束
+
         }
 
         //1 minute rate 離打印時間最近的一分鐘的執行速度
@@ -65,27 +66,23 @@ public class Metrics_04_Histogram {
         System.out.println("Average ratio     : " + (((end-start) / (float)operations_count)) * 1000000 + " ops/millis sec");
 
         /*
-        *              count = 169
-         mean rate = 16.13 calls/second   每秒平均
-         1-minute rate = 14.47 calls/second 最近一分鐘平均
-         5-minute rate = 14.26 calls/second
-         15-minute rate = 14.22 calls/second
-               min = 1.91 milliseconds 最小直
-               max = 173.95 milliseconds 最大直
-              mean = 58.46 milliseconds 平均
-            stddev = 32.65 milliseconds 標準差
-            median = 55.44 milliseconds 中位數
-              75% <= 85.79 milliseconds
-              95% <= 109.82 milliseconds
-              98% <= 123.31 milliseconds
-              99% <= 135.01 milliseconds
-            99.9% <= 173.95 milliseconds
-        *
-        *
-        *
-        *
-        * */
+        com.wistron.witlab.ops_histogram
+             count = 359953363 總共撈了這麼多資料
+               min = 84
+               max = 116
+              mean = 99.62 平均撈取資料量
+            stddev = 5.11
+            median = 100.00
+              75% <= 103.00
+              95% <= 108.00
+              98% <= 110.00
+              99% <= 111.00
+            99.9% <= 116.00
+        */
+    }
+    private static Random fRandom = new Random();
 
-
+    private  static  double getGaussian(double aMean, double aVariance){
+        return  aMean + fRandom.nextGaussian() * aVariance;
     }
 }
